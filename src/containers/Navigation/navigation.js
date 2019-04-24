@@ -1,14 +1,14 @@
 import React from 'react'
 
 
-const Navigation = () => {
+const Navigation = ( {onRouteChange} ) => {
     return (
-    <div className="flex f3 pb6 items-center">
-        <div className="pa2 mh4 ba bw1 .br4">Home</div>
-        <div className="pa2 mh4 ba bw1 .br4">Report</div>
-        <div className="pa2 mh4 ba bw1 .br4">Budget</div>
-        <div className="pa2 mh4 ba bw1 .br4 self-start">Sign out</div>
-    </div>
+    <nav className="flex f3 pb6 items-center">
+        <p className="pa2 mh4 ba bw1 .br4">Home</p>
+        <p className="pa2 mh4 ba bw1 .br4">Report</p>
+        <p className="pa2 mh4 ba bw1 .br4">Budget</p>
+        <p onClick={() => onRouteChange('Signin')} className="pa2 mh4 ba bw1 .br4 self-start">Sign out</p>
+    </nav>
     )
 }
 
