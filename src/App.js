@@ -14,18 +14,31 @@ class App extends Component {
     super(props);
     this.state = {
       percentage: 90,
-      route: 'Signin'
+      route: 'Signin',
+      isSignedIn: false
     }
   }
 
+  // componentDidMount() {
+  //   fetch('http://localhost:3001')
+  //     .then(response => response.json())
+  //     .then(console.log)
+  // }
+
   onRouteChange =(route) => {
+    if (route === 'Signout') {
+      this.setState({isSignedIn: false})
+    } else if (route === 'home') {
+      this.setState({isSignedIn: true})
+    }
     this.setState({route: route});
   }
 
   render() {
+   const { route } = this.state;
     return (
       <div>
-        { this.state.route === 'Home' 
+        { route === 'Home' 
         ? <div>
           <Navigation onRouteChange={this.onRouteChange}/>
           <Accounts />
@@ -33,7 +46,7 @@ class App extends Component {
           <Transactions />
         </div>
           : (
-            this.state.route === 'Signin'
+            route === 'Signin'
           ? <Signin onRouteChange={this.onRouteChange} />
           : <Register onRouteChange={this.onRouteChange} />
           )
